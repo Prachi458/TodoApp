@@ -2,12 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Form from "./components/form";
 import TodoList from "./components/todoList";
+import Search from "./components/search";
 
 function App() {
   const [inputText, setInputText] = useState("");
+  const [tag, setTag] = useState("");
   const [todos, setTodos] = useState([]);
+  const [tags, setTags] = useState([]);
   const [status, setStatus] = useState("All");
   const [filteredTodos, setFilteredTodos] = useState([]);
+  const [searchText, setSearchText] = useState([]);
+  const [newArray, setNewArray] = useState([]);
 
   useEffect(() => {
     getLocalTodos();
@@ -50,17 +55,36 @@ function App() {
       <header>
         <h1>Todo List</h1>
       </header>
+      <Search
+        searchText={searchText}
+        setSearchText={setSearchText}
+        todos={todos}
+        setTodos={setTodos}
+        filteredTodos={filteredTodos}
+        tags={tags}
+        setTags={setTags}
+      />
       <Form
         setInputText={setInputText}
         todos={todos}
         setTodos={setTodos}
         inputText={inputText}
         setStatus={setStatus}
+        tags={tags}
+        tag={tag}
+        setTag={setTag}
+        setTags={setTags}
+        newArray={newArray}
+        setNewArray={setNewArray}
       />
       <TodoList
         todos={todos}
         setTodos={setTodos}
         filteredTodos={filteredTodos}
+        tags={tags}
+        setTags={setTags}
+        searchText={searchText}
+        setSearchText={setSearchText}
       />
     </div>
   );

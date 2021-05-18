@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todo = ({ text, todos, setTodos, todo }) => {
+const Todo = ({ text, inputTags, todos, setTodos, todo }) => {
   const deleteHandler = () => {
     setTodos(todos.filter((item) => item.id !== todo.id));
   };
@@ -28,6 +28,15 @@ const Todo = ({ text, todos, setTodos, todo }) => {
       <button onClick={deleteHandler} className="trash-btn">
         <i className="fas fa-trash"></i>
       </button>
+      <div className="tags-input">
+        <ul id="tags">
+          {inputTags.map((tag, index) => (
+            <li key={index} className="tag">
+              <span className="tag-title">{tag}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
