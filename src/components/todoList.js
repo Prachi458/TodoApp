@@ -1,11 +1,22 @@
 import React from "react";
 import Todo from "./todo";
 
-const TodoList = ({ todos, setTodos, filteredTodos }) => {
+const TodoList = ({ todos, setTodos, filteredTodos, searchText }) => {
+  let searchedTodos;
+
+  if (searchText !== "") {
+    searchedTodos = filteredTodos.filter((tag) =>
+      tag.inputTags.includes(searchText)
+    );
+  }
+  if (searchText === "") {
+    searchedTodos = filteredTodos;
+  }
+  console.log(searchedTodos);
   return (
     <div className="todo-container">
       <ul className="todo-list">
-        {filteredTodos.map((todo) => (
+        {searchedTodos.map((todo) => (
           <Todo
             todos={todos}
             todo={todo}
@@ -13,6 +24,8 @@ const TodoList = ({ todos, setTodos, filteredTodos }) => {
             key={todo.id}
             text={todo.text}
             id={todo.id}
+            inputTags={todo.inputTags}
+            filteredTodos={filteredTodos}
           />
         ))}
       </ul>
