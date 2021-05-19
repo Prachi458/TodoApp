@@ -3,11 +3,6 @@ import React from "react";
 const Search = ({
   searchText,
   setSearchText,
-  todos,
-  setTodos,
-  filteredTodos,
-  tags,
-  setTags,
 }) => {
   const searchHandler = (event) => {
     let val = event.target.value;

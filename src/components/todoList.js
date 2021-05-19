@@ -12,7 +12,7 @@ const TodoList = ({ todos, setTodos, filteredTodos, searchText }) => {
   if (searchText === "") {
     searchedTodos = filteredTodos;
   }
-  console.log(searchedTodos);
+
   return (
     <div className="todo-container">
       <ul className="todo-list">
