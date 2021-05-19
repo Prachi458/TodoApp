@@ -28,13 +28,13 @@ const Form = ({
       let updatedTags = [...tags, tag];
       let newArray = updatedTags;
       setNewArray(newArray);
-      console.log(updatedTags);
-      console.log("updated tags", updatedTags);
       setTags(updatedTags);
     }
+   
   };
 
   const submitTodoHandler = (e) => {
+    
     e.preventDefault();
     if (e.target.value !== "") {
       setTodos([
@@ -48,7 +48,9 @@ const Form = ({
       ]);
       setInputText("");
       setTags("");
+      setNewArray([])
     }
+
   };
 
   const statusHandler = (e) => {
@@ -75,10 +77,10 @@ const Form = ({
         <input
           style={{ marginLeft: "20px" }}
           type="text"
-          onKeyUp={(e) => (e.key === "Enter" ? addTags(e) : null)}
           placeholder="Press enter to add tags"
           value={tag}
           onChange={inputTagsHandler}
+          onKeyUp={(e) => (e.key === "Enter" ? addTags(e) : null)}
         />
         <button type="submit" style={{ "margin-left": "20px" }}>
           Add Todo
